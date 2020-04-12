@@ -1,3 +1,3 @@
 # book-keeper
 
-Simple test task complete using pure JavaScript + HTML + CSS
+Simple test task completed using pure JavaScript + HTML + CSS
