@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css">
+
+  <link rel="stylesheet" href="index.css">
+
+  <script defer src="materialize/js/materialize.min.js"></script>
+
+  <script defer src="utils.js"></script>
+  <script defer src="booksListModel.js"></script>
+  <script defer src="renderer.js"></script>
+  <script defer src="datePickersController.js"></script>
+  <script defer src="modalsController.js"></script>
+  <script defer src="index.js"></script>
+
+  <title>Books that I have lent to friends</title>
+</head>
+
+<body class="grey lighten-4">
+
+  <header class="deep-purple white-text">
+    <h1 class="page-header">Books that I have lent to friends</h1>
+  </header>
+
+  <main class="container">
+    <div class="row list-header">
+      <div class="col w-30"></div>
+      <div class="col s8 center-align grey-text list-italic-header">
+        You have lent
+        <span id="counter">0</span>
+        books to friends
+      </div>
+      <div class="col s3 center-align deep-purple-text list-bold-header">
+        Lent to:
+      </div>
+    </div>
+    <div id="list">
+      <div class="row list-item">
+        <div class="col w-30 deep-purple white-text valign-wrapper font-size-1_4-em">
+          <b>${book.id}</b>
+        </div>
+        <div class="col s8 white list-main">
+          <div class="deep-purple-text font-size-1_4-em book-title"><b>${book.title}</b></div>
+          <div class="grey-text font-size-1_2-em friend"><b>from ${book.author}</b></div>
+        </div>
+        <div class="col s3 center-align blue-grey lighten-4 lent-to-container">
+          <div class="more-button-container">
+            <button class="waves-effect btn-flat deep-purple-text more-button"
+              onclick="booksListModel.openEdit(${book.id})">
+              <span class="material-icons grey-text">more_vert</span>
+            </button>
+          </div>
+          <div class="deep-purple-text font-size-1_2-em friend">${book.friend}</div>
+          <div class="grey-text font-size-1_2-em date">${formatDate(book.from)} - ${book.until || 'open'}</div>
+        </div>
+      </div>
+      <!-- -->
+    </div>
+  </main>
+
+  <footer class="grey lighten-4 page-footer">
+    <button class="waves-effect btn-flat deep-purple-text add-new-button" onclick="booksListModel.openAdd()">
+      <span class="material-icons ">add_box</span>
+      Land a new book away
+    </button>
+  </footer>
+
+  <div id="addNewBookDialog" class="modal">
+    <div class="popup-header deep-purple white-text">
+      Lending a book away
+    </div>
+    <div class="modal-content">
+      <div>
+        <form id="addNewForm">
+          <div class="row">
+            <div class="input-field col s6">
+              <input id="add-new-title" data-input-name="title" type="text">
+              <label for="add-new-title">Title of the book:</label>
+            </div>
+            <div class="input-field col s6">
+              <input id="add-new-author" data-input-name="author" type="text">
+              <label for="add-new-author">Author:</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s6">
+              <input id="add-new-friend" data-input-name="friend" type="text">
+              <label for="add-new-friend">Lent to friend:</label>
+            </div>
+            <div class="input-field col s6">
+              <input id="add-new-until" data-input-name="until" type="text" class="datepicker">
+              <label for="add-new-until">Until:</label>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="modal-footer grey lighten-3">
+      <a href="#!" class="modal-close waves-effect waves-light btn grey lighten-3 grey-text text-lighten-1">Cancel</a>
+      <a href="#!" class="modal-close waves-effect waves-light btn deep-purple"
+        onclick="booksListModel.addBook(getFormValue(addNewForm))">
+        Save
+      </a>
+    </div>
+  </div>
+
+  <div id="editBookDialog" class="modal">
+    <div class="popup-header deep-purple white-text">
+      Lending a book away
+    </div>
+    <div class="modal-content">
+      <div>
+        <form id="editForm">
+          <div class="row">
+            <div class="input-field col s6">
+              <input id="edit-title" data-input-name="title" type="text">
+              <label for="edit-title" class="active">Title of the book:</label>
+            </div>
+            <div class="input-field col s6">
+              <input id="edit-author" data-input-name="author" type="text">
+              <label for="edit-author" class="active">Author:</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s6">
+              <input id="edit-friend" data-input-name="friend" type="text">
+              <label for="edit-friend" class="active">Lent to friend:</label>
+            </div>
+            <div class="input-field col s6">
+              <input id="edit-until" data-input-name="until" type="text" class="datepicker">
+              <label for="edit-until" class="active">Until:</label>
+            </div>
+          </div>
+          <div>
+            <label>
+              <input data-input-name="returned" type="checkbox" class="filled-in" />
+              <span>Book has been returned back</span>
+            </label>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-light btn grey lighten-3 grey-text text-lighten-1">Cancel</a>
+      <a href="#!" class="modal-close waves-effect waves-light btn deep-purple"
+        onclick="booksListModel.editBook(getFormValue(editForm))">
+        Save
+      </a>
+    </div>
+  </div>
+
+</body>
+
+</html>

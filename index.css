@@ -1,0 +1,131 @@
+.waves-effect.waves-indigo .waves-ripple {
+  background-color: #3f51b5;
+}
+
+.popup-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  font-size: 1.2em;
+  font-weight: bold;
+  height: 50px;
+}
+
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  font-size: 1.8em;
+  font-weight: bold;
+  height: 90px;
+}
+
+.page-footer {
+  position: fixed;
+  display: flex;
+  height: 60px;
+  padding: 0px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+}
+
+.add-new-button {
+  display: flex;
+  align-items: center;
+  font-size: 1.2em;
+  font-weight: bolder;
+}
+
+.list-item {
+  height: 150px;
+}
+
+.list-item .col {
+  height: 100%;
+}
+
+.list-header {
+  margin-top: 25px;
+}
+
+.list-header .list-italic-header {
+  font-style: italic;
+}
+
+.list-header .list-bold-header {
+  font-style: italic;
+  font-weight: bold;
+}
+
+[type='checkbox'].filled-in:checked + span:not(.lever):after {
+  border: 2px solid #4caf50;
+  background-color: #4caf50;
+}
+
+.w-30 {
+  width: 30px;
+}
+
+.font-size-1_4-em {
+  font-size: 1.4em;
+}
+
+.font-size-1_2-em {
+  font-size: 1.2em;
+}
+
+.list-item .list-main {
+  padding: 0 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.book-title {
+  flex: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.friend {
+  flex: 50%;
+}
+
+@media only screen and (min-width: 993px) {
+  .container {
+    width: 50%;
+  }
+}
+
+.more-button-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.more-button {
+  display: flex;
+  align-items: center;
+  font-weight: bolder;
+  margin-right: -10px;
+  padding: 0;
+}
+
+.lent-to-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.friend {
+  flex: 50%;
+}
+
+.date {
+  flex: 40%;
+}
